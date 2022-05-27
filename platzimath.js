@@ -1,11 +1,20 @@
-function esPar(lista) {
+// class PlatziMath {
+//   static esPar() {}
+//   static esImpar() {}
+//   static calcularMedian() {}
+// }
+
+const PlatziMath = {};
+
+PlatziMath.esPar = function esPar(lista) {
   return !(lista.length % 2);
 }
-function esImpar(lista) {
+
+PlatziMath.esImpar = function esImpar(lista) {
   return lista.length % 2;
 }
 
-function calcularModa(lista) {
+PlatziMath.calcularModa = function calcularModa(lista) {
   const listaCount = {};
 
   for (let i = 0; i < lista.length; i++) {
@@ -27,9 +36,9 @@ function calcularModa(lista) {
   return moda;
 }
 
-function calcularMediana(listaDesordenada) {
-  const lista = ordenarLista(listaDesordenada);
-  const listaEsPar = esPar(lista);
+PlatziMath.calcularMediana = function calcularMediana(listaDesordenada) {
+  const lista = PlatziMath.ordenarLista(listaDesordenada);
+  const listaEsPar = PlatziMath.esPar(lista);
 
   if (listaEsPar) {
     const indexMitad1ListaPar = (lista.length / 2) - 1;
@@ -38,7 +47,7 @@ function calcularMediana(listaDesordenada) {
     listaMitades.push(lista[indexMitad1ListaPar]);
     listaMitades.push(lista[indexMitad2ListaPar]);
 
-    const medianaListaPar = calcularPromedio(listaMitades);
+    const medianaListaPar = PlatziMath.calcularPromedio(listaMitades);
     return medianaListaPar;
   } else {
     const indexMitadListaImpar = Math.floor(lista.length / 2);
@@ -49,7 +58,7 @@ function calcularMediana(listaDesordenada) {
   }
 }
 
-function calcularPromedio(lista) {
+PlatziMath.calcularPromedio = function calcularPromedio(lista) {
   function sumarTodosElementos(valorAcumulado, nuevoValor) {
     return valorAcumulado + nuevoValor;
   }
@@ -60,7 +69,7 @@ function calcularPromedio(lista) {
   return promedio;
 }
 
-function ordenarLista(listaDesordenada) {
+PlatziMath.ordenarLista = function ordenarLista(listaDesordenada) {
   function ordenarListaSort(valorAcumulado, nuevoValor) {
     return valorAcumulado - nuevoValor;
   }
@@ -71,8 +80,7 @@ function ordenarLista(listaDesordenada) {
   return lista;
 }
 
-// [ [0,1],  [0,1],  [0,1] ]
-function ordenarListaBidimensional(listaDesordenada, i) {
+PlatziMath.ordenarListaBidimensional = function ordenarListaBidimensional(listaDesordenada, i) {
   function ordenarListaSort(valorAcumulado, nuevoValor) {
     return valorAcumulado[i] - nuevoValor[i];
   }
